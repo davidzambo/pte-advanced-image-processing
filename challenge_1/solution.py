@@ -2,15 +2,23 @@ from  PIL import Image
 import matplotlib.pyplot as plt
 import numpy as np
 
-im_RGB = Image.open('./images/image001.jpg')
-im_RGB_array = np.array(im_RGB)
+image = Image.open('./images/image001.jpg')
+
+image_array = np.array(image)
+image_width = len(image_array[0])
+one_third_of_width = image_width // 3
+
+middle_bottle_cap = image_array[:60, one_third_of_width:one_third_of_width * 2, :]
 
 plt.figure()
-plt.imshow(im_RGB)
+plt.imshow(middle_bottle_cap)
 
-im_gray_obj = im_RGB.convert("L")
-im_gray = np.array(im_RGB.convert("L"))
+u = np.arange(0,3,1)+np.arange(0,9,2)[:,np.newaxis]
 
-plt.figure()
-plt.imshow(im_gray,'gray')
-plt.title('GRAYSCALE')
+
+# image_grayscale_obj = image.convert("L")
+# image_grayscale = np.array(image_grayscale_obj)
+
+# plt.figure()
+# plt.imshow(image_grayscale,'gray')
+# plt.title('GRAYSCALE')
